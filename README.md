@@ -43,3 +43,11 @@ O 0 0 0
 C 0 0 {rCO}
 *
 ```
+# Excited states calculation with ADC2
+```
+! ADC2 cc-pVDZ cc-pVDZ/C TightSCF
+%mdci
+nroots 9
+end
+*xyz 0 1 geom.xyz
+```
