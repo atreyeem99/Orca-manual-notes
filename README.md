@@ -27,3 +27,19 @@ riints
 * int 0 1 inp.xyz
 ```
 -note: Do not forget to assign a suitable auxiliary basis set! If Hartree-Fock exchange is present (HF or hybrid-DFT) these are the auxiliary bases optimized for correlation while for non-hybrid functionals the standard RI-J bases are suitable.
+# 5) Potential energy surface scans
+```
+! def2-TZVPD
+%method scanguess pmodel # this assignment forces a PModel guess at each step
+                         # which is often better if diffuse functions are present
+end
+%cis NRoots
+7
+end
+%paras rCO = 0.85,1.45,21;
+end
+* xyz 0 1
+O 0 0 0
+C 0 0 {rCO}
+*
+```
