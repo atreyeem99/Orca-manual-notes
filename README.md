@@ -51,3 +51,27 @@ nroots 9
 end
 *xyz 0 1 geom.xyz
 ```
+# Excited states with EOM-CCSD
+```
+! RHF EOM-CCSD cc-pVDZ TightSCF
+%mdci
+nroots 9
+end
+*xyz 0 1 geom.xyz
+```
+-IP and EA versions can be called using the keywords IP-EOM-CCSD and EA-EOM-CCSD respectively. 
+-For open-shell systems (UHF reference wavefunction), IP/EA-EOM-CCSD calculations require an additional keywords. 
+-An IP/EA calculation involving the removal/attachment of an ↵ electron is requested by setting the DoAlpha keyword to true in the %mdci block, while setting the DoBeta keyword to true selects an IP/EA calculation for the removal/attachment of a electron.
+-Note that DoAlpha and DoBeta cannot simultaneously be true and that the calculation defaults to one in which DoAlpha is true if no keyword is specified on input.
+```
+! IP-EOM-CCSD cc-pVDZ
+%mdci
+DoAlpha true
+NRoots 7
+end
+*xyz 0 3
+O
+0.0 0.0 0.0
+O
+0.0 0.0 1.207
+*
