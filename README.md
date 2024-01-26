@@ -75,6 +75,19 @@ O
 O
 0.0 0.0 1.207
 *
+```
 Both DLPNO-CCSD(T) and DLPNO-MP2 are linear-scaling methods (albeit the former has a larger prefactor). This means that if a DLPNO-MP2 calculation can be performed, DLPNO-CCSD(T) is often going to be within reach, too. However, CCSD(T) is generally much more accurate than MP2 and thus should be given preference.
 
 ORCA features a module to perform TD-DFT, single-excitation CI (CIS) and RPA. The module works with either closed-shell (RHF or RKS) or unrestricted (UHF or UKS) reference wavefunctions. For DFT models the module automatically chooses TD-DFT and for HF wavefunctions the CIS model. If the RI approximation is used in the SCF part it will also be used in the excited states calculation.
+
+# Approximate Second Order SCF (SOSCF)
+SOSCF is an approximately quadratically convergent variant of the SCF procedure [144, 145]. The theory is
+relatively involved and will not be described here. In short – SOSCF computes an initial guess to the inverse
+orbital Hessian and then uses the BFGS formula in a recursive way to update orbital rotation angles. As
+information from a few iterations accumulates, the guess to the inverse orbital Hessian becomes better and
+better and the calculation reaches a regime where it converges superlinearly. As implemented, the procedure
+converges as well or slightly better than DIIS and takes a somewhat less time. However, it is also a lot
+less robust, so that DIIS is the method of choice for many problems (see also the description of the full
+Newton-Raphson procedure in the next section). On the other hand, SOSCF is useful when DIIS gets stuck
+at some error around ⇠ 0.001 or 0.0001. Such cases were the primary motive for the implementation of
+SOSCF into ORCA.
