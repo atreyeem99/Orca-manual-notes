@@ -91,3 +91,12 @@ less robust, so that DIIS is the method of choice for many problems (see also th
 Newton-Raphson procedure in the next section). On the other hand, SOSCF is useful when DIIS gets stuck
 at some error around ⇠ 0.001 or 0.0001. Such cases were the primary motive for the implementation of
 SOSCF into ORCA.
+# Autostart for orbitals
+Older versions of ORCA always created a new GBW file at the beginning of the run no matter whether a file
+of the same name existed or perhaps contained orbitals. Now, in the case of single-point calculations the
+program automatically checks if a .gbw file of the same name exists. If yes, the program checks if it contains
+orbitals and all other necessary information for a restart. If yes, the variable Guess is set to MORead. The
+existing .gbw file is renamed to BaseName.ges and MOInp is set to this filename. If the AutoStart feature is
+not desired, set AutoStart false in the %scf block or give the keyword !NoAutoStart in the simple input
+line. Note that AutoStart is ignored for geometry optimizations: in this case, using previously converged
+orbitals contained in a .gbw file (of a di↵erent name) can be achieved via MORead and MOInp.
