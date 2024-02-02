@@ -100,3 +100,11 @@ existing .gbw file is renamed to BaseName.ges and MOInp is set to this filename.
 not desired, set AutoStart false in the %scf block or give the keyword !NoAutoStart in the simple input
 line. Note that AutoStart is ignored for geometry optimizations: in this case, using previously converged
 orbitals contained in a .gbw file (of a di↵erent name) can be achieved via MORead and MOInp.
+# basis set
+The basis set is specified in the block %BASIS. Note that there are three distinguished slots for auxiliary basis
+sets (AuxJ, AuxC and AuxJK) to be used with RI approximation. Which auxiliary basis slot is used in the
+actual program depends on the context. The AuxJ and AuxJK slots are used in the context of Fock matrix
+construction, whereas the AuxC slot is used for all other integral generation steps e.g. in post-Hartree Fock
+methods. Assigning the auxiliary basis with the simple input, takes care of the individual slots. However, in
+specific cases they must be set explicitly in the block input. For example, a “/JK” basis may be assigned to
+AuxJ in this way.
