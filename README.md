@@ -108,3 +108,6 @@ construction, whereas the AuxC slot is used for all other integral generation st
 methods. Assigning the auxiliary basis with the simple input, takes care of the individual slots. However, in
 specific cases they must be set explicitly in the block input. For example, a “/JK” basis may be assigned to
 AuxJ in this way.
+# cc
+The coupled-cluster method is presently available for RHF and UHF references. The implementation is fairly
+efficient and suitable for large-scale calculations.
