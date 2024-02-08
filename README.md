@@ -111,3 +111,11 @@ AuxJ in this way.
 # cc
 The coupled-cluster method is presently available for RHF and UHF references. The implementation is fairly
 efficient and suitable for large-scale calculations.
+# Orca and symmetry
+with the UseSym keyword or a %symmetry input block (for which the
+abbreviation %sym is allowed), the program detects the point group, cleans up the coordinates, orients the
+molecule and produces symmetry-adapted orbitals in SCF/CASSCF calculations. Note however that the
+calculation time will not be reduced. While for geometry cleanup the full point group is taken into account (as
+long as the number of group operations does not exceed 120), only D2h and subgroups are currently supported
+for electronic-structure calculations. The only correlation module that makes use of this information so far is
+the MRCI module.
