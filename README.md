@@ -119,3 +119,4 @@ calculation time will not be reduced. While for geometry cleanup the full point 
 long as the number of group operations does not exceed 120), only D2h and subgroups are currently supported
 for electronic-structure calculations. The only correlation module that makes use of this information so far is
 the MRCI module.
+# The singlet and triplets in the output of orca is not sorted. 
