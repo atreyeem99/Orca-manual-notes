@@ -120,3 +120,4 @@ long as the number of group operations does not exceed 120), only D2h and subgro
 for electronic-structure calculations. The only correlation module that makes use of this information so far is
 the MRCI module.
 # The singlet and triplets in the output of orca is not sorted. 
+# sort condition should be added in extract file
