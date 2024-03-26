@@ -121,3 +121,18 @@ for electronic-structure calculations. The only correlation module that makes us
 the MRCI module.
 # The singlet and triplets in the output of orca is not sorted. 
 # sort condition should be added in extract file
+# Maxcore use:
+Some ORCA modules (in particular those that perform some kind of wavefunction
+based correlation calculations) require large scratch arrays. Each module has an independent variable
+to control the size of these dominant scratch arrays. However, since these modules are never running
+simultaneously, we provide a global variable MaxCore that assigns a certain amount of scratch memory to all
+of these modules. Thus:
+```
+%MaxCore 4000
+```
+sets 4000 MB (= 4 GB) as the limit for these scratch arrays. This limit applies per processing core.
+Do not be surprised if the program takes more than that – this size only refers to the dominant work areas.
+Thus, you are well advised to provide a number that is significantly less than your physical memory. Note
+also that the memory use of the SCF program cannot be controlled: it dynamically allocates all memory that
+it needs and if it runs out of physical memory you are out of luck. This, however, rarely happens unless you
+run on a really small memory computer or you are running a gigantic job.
