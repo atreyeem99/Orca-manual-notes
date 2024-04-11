@@ -136,3 +136,4 @@ Thus, you are well advised to provide a number that is significantly less than y
 also that the memory use of the SCF program cannot be controlled: it dynamically allocates all memory that
 it needs and if it runs out of physical memory you are out of luck. This, however, rarely happens unless you
 run on a really small memory computer or you are running a gigantic job.
+# printlevel set to 1,2,3,4 to print more
